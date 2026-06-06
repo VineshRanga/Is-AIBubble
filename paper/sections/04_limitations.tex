@@ -1,75 +1,143 @@
 %% sections/04_limitations.tex
 %% Module 4: Methodology Limitations and Future Work
 
-\subsection{Public Market Proxies for Private Foundational Lab Valuations}
+\section{Methodology Limitations and Future Work}
+\label{sec:limitations}
 
-The most significant methodological limitation of this study is the reliance on
-\textit{secondary market transaction prices} and \textit{journalistic valuation
-estimates} for the three principal IPO candidates: SpaceX (\$1.75T--\$2.3T target),
-Anthropic ($\$1$T), and OpenAI (\$850B--\$1.1T) \citep{bloomberg_spacex_2026,
-wsj_anthropic_ipo, ft_openai_ipo}.
+Quantitative models are only as reliable as the assumptions baked into them. This section
+documents the specific limitations of the framework presented in this paper. We are
+explicit about what we know, what we are assuming, and where a future study could
+improve on this work. Readers who are primarily interested in the conclusions should
+treat the scenario outputs as order-of-magnitude reasoning rather than precise forecasts.
 
-Private secondary market valuations are subject to:
+\subsection{Private Valuation Proxies and the Float Drain Estimate}
+
+The most significant limitation of this study is the reliance on secondary market
+transaction prices and journalistic valuation estimates for the three principal IPO
+candidates. SpaceX targets a valuation of \$1.75T--\$2.3T, Anthropic has been
+reported at approximately \$1T, and OpenAI at \$850B--\$1.1T
+\citep{bloomberg_spacex_2026,wsj_anthropic_ipo,ft_openai_ipo}.
+
+These figures are not equivalent to public market valuations. They are subject to
+three structural distortions:
+
 \begin{enumerate}
-  \item \textbf{Illiquidity premia:} Shares trading on Forge Global, Hiive, or
-        CartaX command a 15--40\% premium to theoretical fundamental value due
-        to scarcity, which collapses at IPO \citep{bessembinder2020}.
-  \item \textbf{Selection bias:} Only investors with positive views on a private
-        company transact in secondary markets; information asymmetry between
-        sellers (insiders) and buyers (outsiders) is not observable.
-  \item \textbf{Valuation vintage mismatch:} The most recent private rounds
-        for OpenAI (\$40B at a \$340B pre-money in March 2025) and Anthropic
-        (\$7.5B at \$61.5B pre-money in November 2024) are structurally
-        different instruments (preferred with liquidation preferences) from
-        public common equity.
+  \item \textbf{Illiquidity premia:} Shares trading on Forge Global, Hiive, or CartaX
+        command a 15--40\% premium relative to theoretical fundamental value, driven
+        purely by scarcity. This premium compresses at IPO when supply becomes
+        unrestricted \citep{bessembinder2020}.
+  \item \textbf{Selection bias:} Only buyers with a positive view on a private company
+        participate in secondary markets. Sellers are typically insiders with informational
+        advantages. The resulting prices reflect the most optimistic end of the valuation
+        distribution, not the consensus.
+  \item \textbf{Instrument mismatch:} The most recent private rounds for OpenAI
+        (\$40B raised at a \$340B pre-money in March 2025) and Anthropic (\$7.5B at a
+        \$61.5B pre-money in November 2024) are structured as preferred equity with
+        liquidation preferences. Common equity at IPO is structurally junior and will
+        trade at a discount to the preferred-share implied valuation.
 \end{enumerate}
 
-The $\$210$B float supply drain estimate should therefore be treated as an
-order-of-magnitude scenario assumption, not a precisely calibrated figure.
-A 50\% discount to stated valuations would reduce the estimated drain to
-$\$105$B---still the largest synchronised IPO liquidity extraction in market history
-but materially different from the base case.
+A 50\% discount to the stated preferred-round valuations would reduce the aggregate
+float supply drain estimate to approximately \$105 billion. That figure is still
+large enough to qualify as the most significant synchronised IPO liquidity extraction
+in US market history. However, it produces a materially different concentration
+amplifier and a correspondingly lower peak PFE across all three scenarios.
 
-\subsection{Flat FCF Baseline Assumption}
+\textbf{Practical implication:} Investors and risk managers should maintain parallel
+scenario estimates at 50\%, 75\%, and 100\% of the stated float drain. The structural
+argument (concentrated supply shock into a high-concentration index) holds at all three
+levels. The severity of the tail risk does not.
 
-The Monetisation Runway calculation (Section~\ref{sec:intro}) assumes that aggregate
-hyperscaler FCF remains flat at its Q1~2026 annualised level. This assumption is
-violated if:
+\subsection{The Flat FCF Baseline and Revenue Uncertainty}
+
+The Monetisation Runway calculation in Equation~\ref{eq:runway} assumes that aggregate
+hyperscaler free cash flow remains flat at its Q1~2026 annualised level (\$127B) while
+Capex continues at the trailing 32.4\% CAGR. We do not forecast hyperscaler revenue.
+The flat FCF assumption is a stress scenario, not a central estimate.
+
+This assumption is violated in several plausible ways:
 
 \begin{itemize}
-  \item AI application revenue materialises faster than modelled, generating operating
-        leverage that expands FCF margins (upside risk to our thesis).
-  \item Hyperscalers accelerate capex in response to competitive pressure without
-        corresponding revenue acceleration (downside risk, consistent with our thesis).
-  \item A Capex pause occurs due to balance sheet constraints or regulatory intervention
-        (non-linear discontinuity our model does not currently handle).
+  \item \textbf{Revenue upside:} AI application revenue materialises faster than the
+        Capex curve would imply. Specifically, if enterprise AI software adoption
+        accelerates (driven by agentic AI deployment in 2026--2027), operating
+        leverage could expand FCF margins rapidly. A 20\% FCF growth rate would
+        extend the implied runway by approximately 4 additional quarters.
+  \item \textbf{Capex downside:} Hyperscalers accelerate Capex further in response to
+        competitive pressure without corresponding revenue growth. This is the scenario
+        most consistent with our thesis. Capex-to-FCF ratios above $3\times$
+        historically trigger investor-imposed capital discipline through shareholder
+        activism or covenant restrictions.
+  \item \textbf{Non-linear discontinuity:} A Capex pause triggered by a major GPU
+        supply disruption, a regulatory intervention (e.g., export controls on advanced
+        chip exports), or a voluntary strategic review by one of the four hyperscalers
+        would compress the aggregate Capex trajectory in a way our linear CAGR model
+        cannot represent. This would be a bullish discontinuity for our
+        FCF-recovery thesis.
 \end{itemize}
 
-\subsection{Correlation Matrix Stability Under Compute Derivative Introduction}
+\subsection{Correlation Matrix Stability and the 2022 Calibration Window}
 
-The ScenarioStressTester calibrates its correlation matrix on the 2022 drawdown
-window (January--December 2022). If a functioning compute derivatives market develops
-prior to the 2026 IPO events, the hedging activity of hyperscalers and their investors
-would alter the correlation structure between AI equities, volatility products, and
-fixed-income instruments in ways our historical correlation matrix cannot capture.
+The \texttt{ScenarioStressTester} calibrates its correlation matrix using the 2022
+drawdown window (January through December 2022). This is the most recent analogous
+stress period available in our dataset. However, a 2026 liquidity shock driven by
+IPO supply would differ structurally from the 2022 rate-driven drawdown in ways that
+the historical correlation matrix may not capture.
 
-Specifically, delta-hedging activity by compute option market-makers would introduce
-a mechanical correlation between NDX realised volatility and GPU spot prices that
-does not exist in our historical data. This represents an entirely unmodelled risk factor.
+Three specific structural differences warrant caution:
+
+\begin{enumerate}
+  \item \textbf{Cause of drawdown:} The 2022 drawdown was driven by Federal Reserve
+        rate hikes affecting the discount rate applied to long-duration growth assets.
+        A 2026 IPO-supply shock operates through a different mechanism (liquidity
+        absorption and forced selling), which historically produces faster initial
+        velocity but a shorter duration.
+  \item \textbf{Fixed income correlation:} In 2022, equities and bonds fell together
+        (positive correlation) because the rate shock was the common factor. In a
+        liquidity-driven shock, the correlation between equities and Treasuries is
+        more likely to revert to negative (flight-to-quality), altering the effective
+        hedging properties of standard 60/40 portfolios.
+  \item \textbf{Compute derivative feedback:} If a functioning GPU futures market
+        exists by 2026, delta-hedging activity by compute option market-makers would
+        introduce a new mechanical correlation between NDX realised volatility and GPU
+        spot prices. This correlation does not exist in our 2022 calibration data. It
+        represents an entirely unmodelled risk factor that could either amplify or
+        dampen the scenario outcomes depending on the net hedge direction.
+\end{enumerate}
+
+\textbf{Practical implication:} The scenarios presented in Section~\ref{sec:impact}
+should be re-calibrated with an updated correlation matrix as Q3 2026 approaches
+and as compute derivative market pricing becomes observable. The quantitative
+infrastructure built in this study supports that re-calibration with no
+structural changes to the model.
 
 \subsection{Future Work}
 
 \begin{enumerate}
   \item \textbf{Real-time index weight data:} Replace interpolated concentration
-        estimates with actual daily constituent weight data from Bloomberg/Refinitiv.
+        estimates with actual daily constituent weight data from Bloomberg or Refinitiv.
+        The current HHI estimates are based on quarterly published disclosures, which
+        understates intra-quarter concentration changes during fast-moving market events.
   \item \textbf{Credit spread propagation:} Extend the VaR/PFE framework to
         investment-grade and high-yield credit spreads, modelling the second-order
-        contagion from equity drawdown to corporate bond market liquidity.
-  \item \textbf{Compute capacity utilisation rate:} Incorporate CoreWeave spot pricing
-        or equivalent as a real-time proxy for AI infrastructure monetisation velocity.
-  \item \textbf{Multi-asset PFE:} Generalise the PFE calculation from equity-only
-        to a cross-asset portfolio that includes TIPS, VIX, and sector ETF exposures.
-  \item \textbf{Bayesian scenario updating:} Replace fixed scenario probabilities
-        with a Bayesian framework that updates as IPO filing dates and preliminary
-        prospectus valuations become available.
+        contagion pathway from equity drawdown to corporate bond market liquidity.
+        Hyperscalers with investment-grade ratings and large debt programmes represent
+        a meaningful channel for systemic risk propagation.
+  \item \textbf{OCPI integration:} Incorporate the Ornn Compute Price Index spot pricing
+        (or CoreWeave equivalent) as a real-time proxy for AI infrastructure
+        monetisation velocity. A sustained decline in GPU rental rates would be an
+        early-warning signal for Capex deceleration.
+  \item \textbf{Multi-asset PFE:} Generalise the PFE calculation from equity-only to a
+        cross-asset portfolio including TIPS, VIX, and sector ETF exposures. This would
+        allow the framework to produce hedging-strategy-level output rather than index-level
+        stress estimates.
+  \item \textbf{Bayesian scenario updating:} Replace the fixed Fizzle, Systemic Short,
+        and Dotcom Pop scenario probabilities with a Bayesian framework. As IPO filing
+        dates, S-1 prospectus valuations, and macroeconomic data arrive through 2026,
+        the posterior probability mass over scenarios can be updated dynamically.
+  \item \textbf{Agent-based simulation:} Model the interaction between index passive
+        vehicles, leveraged ETF holders, and macro hedge fund short positions during a
+        stress event. The linear PFE model currently does not represent the
+        feedback loop between forced selling and price impact. An agent-based
+        simulation would quantify this non-linearity.
 \end{enumerate}
