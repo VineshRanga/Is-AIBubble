@@ -65,6 +65,7 @@ evaluation window. The paper concludes by examining structural mitigations inclu
 compute derivatives markets and policy-level circuit-breaker enhancements.
 \end{abstract}
 
+\clearpage
 \tableofcontents
 \clearpage
 
@@ -74,18 +75,13 @@ compute derivatives markets and policy-level circuit-breaker enhancements.
 \input{sections/04_limitations}
 
 \clearpage
-\bibliographystyle{plainnat}
-\bibliography{references}
-
-%% Appendices
-\appendix
 
 \section{Data Sources and Reproducibility}
-\label{app:data}
+\label{sec:data}
 
 All data used in this study is sourced from publicly available, open-source endpoints
-and is fully reproducible. The complete codebase is available at
-\url{https://github.com/VineshRanga/Is-AIBubble}.
+and is fully reproducible. The complete codebase, including ETL pipelines, model code,
+and Jupyter notebooks, is available at \url{https://github.com/VineshRanga/Is-AIBubble}.
 
 \begin{itemize}
   \item \textbf{Hyperscaler financials:} SEC EDGAR CompanyFacts XBRL API
@@ -96,7 +92,17 @@ and is fully reproducible. The complete codebase is available at
     Tickers: \texttt{\^{}GSPC}, \texttt{\^{}NDX}, MSFT, GOOGL, AMZN, META, CSCO.
   \item \textbf{Macro indicators:} Federal Reserve FRED API. Series: FEDFUNDS
     \citep{fred_fedfunds}, M2SL \citep{fred_m2}, STLFSI4 \citep{fred_stlfsi}.
+  \item \textbf{Caching and rate limiting:} All API calls are rate-limited to 10
+    requests per second (SEC EDGAR) and cached locally in Apache Parquet format.
+    No paid data subscriptions are required to reproduce results.
 \end{itemize}
+
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+%% Appendices
+\appendix
 
 \section{Cornish-Fisher VaR Derivation}
 \label{app:cf}
