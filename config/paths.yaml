@@ -1,0 +1,23 @@
+data:
+  raw: "data/raw"
+  cache: "data/cache"
+  processed: "data/processed"
+  external: "data/external"
+paper:
+  figures: "paper/figures"
+analysis:
+  start_date: "1995-01-01"
+  end_date: "2026-06-01"
+  dotcom_comparison:
+    start: "1995-01-01"
+    end: "2002-12-31"
+  ai_cycle:
+    start: "2020-01-01"
+    end: "2026-06-01"
+tickers:
+  hyperscalers: ["MSFT", "GOOGL", "AMZN", "META"]
+  indices: ["^GSPC", "^NDX"]
+fred_series:
+  fed_funds: "FEDFUNDS"
+  m2: "M2SL"
+  financial_stress: "STLFSI4"

@@ -1,0 +1,17 @@
+# Core
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+statsmodels==0.14.6
+pyyaml==6.0.3
+pyarrow==24.0.0
+
+# Data APIs
+yfinance==1.4.1
+pandas-datareader==0.10.0
+sec-edgar-downloader==5.1.0
+
+# Development / validation
+pytest==9.0.3
+python-dotenv==1.2.2
+pre-commit==4.6.0

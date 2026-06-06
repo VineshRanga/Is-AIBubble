@@ -1,0 +1,13 @@
+etl:
+  rate_limits:
+    sec_edgar: 10.0
+    fred: 5.0
+    yfinance: 2.0
+    default: 5.0
+  cache:
+    default_extension: "parquet"
+    json_compression: "gzip"
+    csv_compression: "gzip"
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
