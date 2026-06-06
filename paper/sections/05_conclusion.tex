@@ -4,112 +4,115 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-\subsection{What We Set Out to Prove}
+\subsection{Framing This Paper as an Exploratory Framework}
 
-This paper began with a straightforward empirical observation: four companies are
-spending more than twice what they earn in free cash flow on data centres, at a pace
-that structurally mirrors the fibre-optic overbuild that destroyed trillions of dollars
-of market value between 2000 and 2002. We asked three questions. How severe is the
-imbalance? What happens when a \$210 billion IPO supply shock collides with that
-imbalance at peak market concentration? And do practical tools exist to hedge the
-resulting systemic risk before the correction arrives?
+This paper is best understood as an analytical starting point rather than a
+definitive forecast. Markets are adaptive, multi-agent systems whose dynamics
+resist precise prediction; the goal of quantitative risk research is therefore
+not to identify exactly when stress will materialise, but to construct a structured
+lens through which observable preconditions can be monitored and measured. With
+that framing in mind, this study documents a convergence of three independently
+observable conditions, develops a preliminary framework for estimating their
+combined tail risk, and proposes a class of instruments that could provide
+partial mitigation if that risk crystallises.
 
 \subsection{The Three Empirical Pillars}
 
-The answer to the first question is quantified in Section~\ref{sec:intro}.
-The aggregate Capex-to-FCF ratio for the four AI hyperscalers crossed the structural
-$1.0\times$ stress threshold in the first quarter of 2026. With FCF flat at \$127
-billion and Capex growing at a 32.4\% trailing CAGR, the implied Monetisation Runway
-is approximately 7.3 quarters. This is not a prediction of corporate default. It is a
-structural indicator that the market is pricing growth expectations that require AI
-applications to reach commercial scale before the cash flow math breaks.
+The first condition, documented in Section~\ref{sec:intro}, is the divergence
+between hyperscaler capital expenditure and free cash flow. At the end of fiscal
+year 2025, the aggregate Capex-to-FCF ratio for the four AI hyperscalers
+(Microsoft, Alphabet, Amazon, and Meta) stood at $2.31\times$, having crossed
+the $1.0\times$ structural stress threshold in the first quarter of 2026.
+The implied Monetisation Runway of approximately 7.3 quarters is a useful
+indicator of how long current spending trajectories can continue under a
+flat-FCF assumption. It is emphatically a stress scenario designed to
+prompt monitoring, not a point estimate of corporate distress.
 
-The answer to the second question is in Section~\ref{sec:impact}. The simultaneous
-public market listing of SpaceX, Anthropic, and OpenAI within a six-month window
-constitutes the largest synchronised IPO liquidity extraction in US market history.
-At \$210 billion in aggregate float supply, the shock represents a fraction of total
-market capitalisation. Its danger is not its absolute size. Its danger is its timing
-and its destination. It arrives when hyperscaler balance sheets are at maximum
-stress, and it drains liquidity from the precise market segment already under
-fundamental pressure.
+The second condition is the synchronised IPO supply cycle described in
+Section~\ref{sec:intro} and modelled in Section~\ref{sec:impact}. The anticipated
+public market listings of SpaceX, Anthropic, and OpenAI within a compressed
+six-month window would constitute an aggregate float supply addition of
+approximately \$210 billion. While modest relative to total market capitalisation,
+this supply arrives in the technology sector at a moment when fundamental catalysts
+for repricing are already active, and the amplification mechanism is structural
+rather than speculative: passive vehicle rebalancing forces proportional selling
+across the entire index whenever the concentrated technology cluster weakens.
 
-The amplifier is the HHI concentration factor. The five largest Nasdaq-100
-constituents now account for approximately 67.8\% of index weight, compared to
-29.2\% in 2010. The HHI-based concentration amplifier of $2.66\times$ means that
-a 10\% shock to the AI cluster in 2026 produces a 7\% index-level move that
-cascade-forces passive vehicle rebalancing across the entire portfolio. That
-cascade is what transforms a sector correction into a systemic event.
+The third condition is the HHI-based concentration amplifier described in
+Section~\ref{sec:impact}. The five largest Nasdaq-100 constituents account for
+approximately 67.8\% of index weight in 2026, compared to 29.2\% in 2010, yielding
+a concentration amplifier of $\alpha_{\HHI} = 2.66\times$. This amplifier is
+structural: it follows directly from published index weight disclosures and does not
+depend on any model assumption. It means that a 10\% shock to the AI cluster
+propagates to approximately a 7\% index-level move through mechanical rebalancing,
+compared to roughly 3\% under the 2010 composition.
 
-\subsection{Why Traditional Diversification Fails Here}
+\subsection{Why Standard Diversification Assumptions Require Re-Examination}
 
-A portfolio manager who understood none of the above but held a standard 60/40
-allocation would still be exposed. The mechanism is passive vehicle rebalancing.
-When the top-5 NDX constituents command 67.8\% of the index, every broad-market
-ETF in the world is, functionally, a concentrated bet on the same five companies.
-Holding \textit{VOO} and \textit{QQQ} alongside individual AI positions does not
-diversify; it multiplies the concentration. Standard diversification advice fails
-when the diversification vehicle itself is the concentrated instrument.
+A portfolio constructed on the standard assumption that broad-market index funds
+provide meaningful sector diversification faces a structural challenge in the
+current environment. When the five largest constituents of the Nasdaq-100
+collectively represent 67.8\% of index weight, instruments such as broad-market
+ETFs and passively managed mutual funds function as implicitly concentrated
+AI-sector exposures. Layering individual AI positions on top of index holdings
+therefore compounds rather than diversifies the underlying concentration. This
+observation does not imply that passive investing is inappropriate; it suggests
+that the effective sector exposure embedded in standard passive portfolios warrants
+explicit measurement and, where necessary, specific hedging overlays.
 
-This is the core structural fragility documented in this paper. It is not a risk
-that can be analysed away with tighter models. It requires either market structure
-reform (concentration guardrails, circuit-breakers) or new instruments that allow
-investors to hedge the AI cluster specifically without exiting public equity markets
-entirely.
+\subsection{Compute Derivatives as a Candidate Mitigation Instrument}
 
-\subsection{Compute Derivatives Are Not a Novelty. They Are a Structural Requirement.}
+Section~\ref{sec:mitigation} introduces compute derivatives, an emerging class of
+financial instruments anchored to transparent reference rates such as the Ornn
+Compute Price Index, as a candidate mechanism for managing hyperscaler hardware
+exposure. The quantitative proof of concept developed in this paper demonstrates
+that a 300{,}000-unit H100 fleet with \$9 billion in Capex exposure, hedged via a
+short ICE GPU futures position at the M1 OCPI forward rate, would have preserved
+\$528.6 million in cumulative margin over 12 months under a 30\% spot rental rate
+crash, with a hedge effectiveness of 98.4\%. These results are encouraging, though
+they should be interpreted cautiously: the model uses a synthetic forward curve
+calibrated to stylised supply and demand dynamics, and actual GPU futures markets
+do not yet exist at the scale or liquidity required for institutional hedging
+programmes of this magnitude. The proposal is offered as a theoretical blueprint
+for market development rather than an immediately deployable strategy.
 
-Section~\ref{sec:mitigation} argues that compute derivatives are the appropriate
-corrective instrument. The Ornn Compute Price Index provides the transparent
-reference rate that makes derivatives pricing possible. ICE GPU futures allow
-hyperscalers to lock in hardware ROI, transforming the binary outcome (monetisation
-works or it does not) into a managed variance problem. Prediction markets on IPO
-timelines and drawdown thresholds allow institutional investors to hedge specific
-event risk within a CFTC-regulated framework.
+\subsection{Scope Limitations and the Path to Refinement}
 
-The quantitative proof of concept in this paper is unambiguous. A 300{,}000-unit
-H100 fleet financed with \$9 billion in Capex, hedged via short ICE GPU futures at
-the M1 OCPI forward rate, preserves \$528.6 million of cumulative margin over 12
-months under a 30\% spot rental rate crash. The hedge effectiveness is 98.4\%.
-That is not a rounding error. It represents the difference between a hyperscaler
-that manages a compute downturn with discipline and one that faces an unplanned
-FCF shortfall mid-cycle.
+The limitations of this framework, detailed in Section~\ref{sec:limitations}, are
+material. The correlation matrix used in the \texttt{ScenarioStressTester} is
+calibrated on the 2022 rate-driven drawdown, which differs mechanistically from the
+liquidity-shock dynamics of a 2026 IPO supply event. Private valuations for the
+three principal IPO candidates are based on secondary market transactions and
+journalistic reporting, both of which introduce selection bias and instrument
+mismatch relative to public-market common equity pricing. The flat FCF baseline
+underpinning the Monetisation Runway calculation is a deliberately conservative
+assumption whose violation in either direction (through faster revenue growth or
+accelerated Capex) would alter the model output substantially.
 
-The broader implication is that compute derivatives markets are not merely useful
-risk management tools. They are a structural requirement for the orderly functioning
-of public equity markets in an era where AI infrastructure spend has become the
-dominant driver of index-level volatility.
+These limitations do not undermine the structural argument; they define the
+boundaries within which the quantitative outputs should be trusted. The appropriate
+response is iterative recalibration: as S-1 filings provide verifiable valuation
+data, as OCPI-linked instruments develop observable price signals, and as quarterly
+earnings releases update the FCF trajectory, each component of this framework can
+be refined independently without structural revision.
 
-\subsection{What This Paper Does Not Claim}
+\subsection{Closing Perspective}
 
-Readers should be clear about the limits of this analysis, which are documented
-fully in Section~\ref{sec:limitations}. We do not claim to know when the correction
-will occur, or whether it will occur at all. The flat FCF baseline is a stress
-scenario, not a central forecast. Revenue upside from AI application adoption
-could invalidate the entire runway calculation. Private valuations for the IPO
-candidates could compress to 50\% of current estimates, halving the float drain.
+Historical analogues illuminate the shape of structural vulnerabilities without
+determining their timing or severity. Observers who documented the fibre-optic
+overbuild in the late 1990s were empirically correct about the imbalance; the
+velocity and magnitude of the eventual correction nonetheless surprised even
+well-informed participants. This paper's contribution lies not in predicting that
+a specific outcome will occur, but in providing a structured, data-grounded
+framework for tracking the conditions under which tail risk is elevated.
 
-The structural argument holds across all plausible parameter combinations. Some
-version of a concentrated technology sector experiencing simultaneous IPO supply
-pressure is happening in 2026, regardless of the exact dollar figures. The
-quantitative framework built here is designed to be re-calibrated as those figures
-become observable.
-
-\subsection{A Final Word on Urgency}
-
-The Dotcom collapse was not a surprise to everyone. A meaningful body of academic
-and practitioner work identified the structural imbalances in the late 1990s telecom
-buildout before the correction arrived. The surprise was not the existence of the
-imbalance. The surprise was the speed and severity of the unwind once sentiment
-shifted.
-
-The framework in this paper is built to reduce that surprise element for the
-current cycle. The Compute Cliff is visible in audited financial statements. The
-HHI concentration is computable from published index weights. The IPO supply
-pipeline is documented in journalistic and regulatory filings. None of this is
-hidden. What has been missing is a unified quantitative framework that connects
-these data points to a coherent systemic risk estimate. That is what this paper
-provides.
-
-The tools now exist. The decision of whether to use them belongs to market
-participants, index providers, and regulators. This paper argues that the cost of
-inaction is not theoretical. It is 7.3 quarters away.
+The Compute Cliff is visible in audited financial statements. The HHI concentration
+is computable from published index weights. The IPO supply pipeline is documented
+in regulatory and journalistic filings. The convergence of these three observable
+signals into a unified risk estimate, validated through formal Kupiec and
+Christoffersen backtesting, represents the analytical contribution of this work.
+Whether that contribution proves prescient or, preferably, unnecessary because the
+market absorbs the supply shock gracefully, the framework built here provides
+institutional risk practitioners with an explicit monitoring architecture for a
+novel class of systemic exposure. That, rather than any particular forecast, is
+what this paper offers to the broader risk management literature.
