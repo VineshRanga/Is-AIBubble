@@ -57,6 +57,21 @@ An OCPI-based reference rate would allow hyperscalers, hedge funds, and institut
 investors to enter into binding financial contracts linked to the cost of AI compute
 capacity, independent of any single cloud provider's pricing decisions.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig11_ocpi_forward_curve.png}
+  \caption{
+    \textbf{OCPI-H100 Synthetic 24-Month Forward Curve.}
+    Left panel: term structure of the Ornn Compute Price Index, showing the
+    transition from supply-bottleneck contango (peak $+1.7\%$ at month 5) to
+    demand-normalisation backwardation ($-46.4\%$ at month 24). Right panel:
+    forward basis expressed as a percentage premium or discount to spot.
+    The model is calibrated to a spot rate of \$2.00/GPU-hr with a
+    commoditisation secular trend of $-2.5\%$/month.
+  }
+  \label{fig:ocpi_curve}
+\end{figure}
+
 \subsection{ICE GPU Futures: Hedging Hyperscaler Hardware Exposure}
 
 Once a transparent reference rate exists, exchange-traded futures contracts become
@@ -80,6 +95,27 @@ The practical challenge is clearing and settlement. Physical delivery of GPU har
 impractical at futures contract scale. A cash-settled structure keyed to the OCPI
 published fixing is the technically sound solution, analogous to the cash settlement
 mechanism used in oil futures and interest rate swaps.
+
+Figure~\ref{fig:gpu_hedge} quantifies the hedging benefit under the Systemic Short
+scenario (30\% OCPI spot crash at month 7). A 300{,}000-unit H100 fleet with
+\$9B of Capex exposure, hedged via short ICE GPU futures at the M1 forward rate,
+preserves \$528.6M of cumulative margin over 12 months that would otherwise be
+destroyed by the spot price collapse.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig12_gpu_hedge_pnl.png}
+  \caption{
+    \textbf{ICE GPU Futures Hedge: Unhedged vs.\ Hedged Cash Flow Under 30\% OCPI Spot Crash.}
+    Left panel: monthly GPU rental revenue for the unhedged (red/blue) and
+    hedged (green) positions. The short futures position delivers a gain of
+    approximately \$108M per month from month 7, exactly offsetting the spot-rate
+    revenue shortfall. Right panel: net margin after hardware depreciation, with
+    a 12-month cumulative hedge benefit of \$528.6M annotated.
+    Hedge effectiveness: 98.4\%.
+  }
+  \label{fig:gpu_hedge}
+\end{figure}
 
 \subsection{Kalshi Prediction Markets: Retail and Institutional Timeline Hedging}
 
@@ -168,3 +204,5 @@ hedging structures follow directly from the VaR and PFE framework:
         of whether AI applications reach commercial inflection, providing a long
         position with a structurally different risk profile.
 \end{enumerate}
+
+\clearpage

@@ -14,9 +14,9 @@ entire portfolio. We measure this concentration using the
 Herfindahl-Hirschman Index (HHI), which sums the squared market share weights of the
 top-5 constituents.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig7_concentration_hhi.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig7_concentration_hhi.png}
   \caption{
     \textbf{Index Concentration: HHI and Top-5 Weight (2010--2026).}
     The HHI for the S\&P~500 top-5 concentration rose from 297 in 2010 to 874 in 2026
@@ -73,9 +73,9 @@ loss across a Monte Carlo ensemble of 2{,}000 GBM paths:
 where $L_t^{(i)} = 1 - S_t^{(i)} / S_0$ is the fractional loss at horizon $t$ on
 simulated path $i$.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig8_scenario_var_pfe.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig8_scenario_var_pfe.png}
   \caption{
     \textbf{Scenario VaR and PFE Surface (Nasdaq-100 and S\&P~500, 99\% confidence).}
     PFE curves shown for Fizzle, Systemic Short, and Dotcom scenarios over a
@@ -97,7 +97,7 @@ at 99\% confidence). The OOS window (2022--2026) experienced the 2022 AI and gro
 equity drawdown ($-35.3\%$ NDX peak-to-trough) without producing single-day returns
 exceeding the IS-calibrated threshold.
 
-\begin{table}[H]
+\begin{table}[htbp]
   \centering
   \caption{
     \textbf{Model Performance Matrix: IS Calibration vs.\ OOS Backtest.}
@@ -159,7 +159,7 @@ scenario-adjusted VaR results. The concentration amplifier $\alpha_{\HHI}$ scale
 base CF VaR estimate to account for the non-linear propagation of a concentrated sector
 shock through passive index vehicles.
 
-\begin{table}[H]
+\begin{table}[htbp]
   \centering
   \caption{
     \textbf{Index Concentration Metrics and Scenario-Adjusted Risk (2026).}
@@ -187,3 +187,41 @@ shock through passive index vehicles.
     \bottomrule
   \end{tabular}
 \end{table}
+
+\subsection{Out-of-Sample Backtest Visualisation}
+
+Figures~\ref{fig:var_backtest} and~\ref{fig:drawdown_error} provide the visual
+counterpart to Table~\ref{tab:performance}. Figure~\ref{fig:var_backtest} overlays
+daily index returns against the dynamic 99\% Cornish-Fisher VaR boundary for the
+2022--2026 out-of-sample window, marking the single GSPC breach and confirming the
+over-conservatism interpretation. Figure~\ref{fig:drawdown_error} plots the model
+residuals across all TimeSeriesSplit folds, with Kupiec $p$-values annotated per fold.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig9_var_backtest_oos.png}
+  \caption{
+    \textbf{Out-of-Sample VaR Backtest (2022--2026): Nasdaq-100 and S\&P~500.}
+    Daily log-returns plotted against the IS-calibrated 99\% Cornish-Fisher VaR
+    boundary. Breach events (returns falling below the VaR threshold) are highlighted
+    in red. The near-zero breach count confirms that the IS calibration is
+    appropriately conservative for the AI-era return regime.
+  }
+  \label{fig:var_backtest}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig10_drawdown_velocity_error.png}
+  \caption{
+    \textbf{Drawdown Velocity Model Residuals and Kupiec $p$-values Across CV Folds.}
+    Each point represents one TimeSeriesSplit fold. The left panel shows the
+    mean absolute error between simulated drawdown velocity and observed market
+    prints. The right panel annotates Kupiec $p$-values, confirming that rejections
+    reflect over-conservatism rather than model mis-specification in the
+    dangerous direction.
+  }
+  \label{fig:drawdown_error}
+\end{figure}
+
+\clearpage
