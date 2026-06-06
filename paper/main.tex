@@ -3,6 +3,7 @@
 %% Repricing of the AI Infrastructure Mega-Cycle
 %%
 %% Submission target: arXiv q-fin.RM / q-fin.ST
+%% Citation style   : APA 7th Edition (biblatex authoryear, bibtex backend)
 
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
@@ -12,7 +13,20 @@
 \usepackage[expansion=false]{microtype}
 \usepackage[hidelinks]{hyperref}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
-\usepackage{natbib}
+
+%% APA 7 citation engine: biblatex with authoryear style (bibtex backend).
+%% natbib=true provides \citep / \citet compatibility.
+\usepackage[
+  style=authoryear,
+  backend=bibtex,
+  natbib=true,
+  doi=false,
+  isbn=false,
+  url=true,
+  maxcitenames=2,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{references.bib}
 
 %% Float placement tuning
 \renewcommand{\topfraction}{0.9}
@@ -73,6 +87,7 @@ compute derivatives markets and policy-level circuit-breaker enhancements.
 \input{sections/02_impact}
 \input{sections/03_mitigation}
 \input{sections/04_limitations}
+\input{sections/05_conclusion}
 
 \clearpage
 
@@ -98,8 +113,7 @@ and Jupyter notebooks, is available at \url{https://github.com/VineshRanga/Is-AI
 \end{itemize}
 
 \clearpage
-\bibliographystyle{plainnat}
-\bibliography{references}
+\printbibliography[heading=bibintoc, title={References}]
 
 %% Appendices
 \appendix

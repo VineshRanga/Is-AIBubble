@@ -32,9 +32,9 @@ real interest rates through 2021.
 
 \subsection{The Compute Cliff: Capex-FCF Divergence}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig1_ai_infrastructure_cliff.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig1_ai_infrastructure_cliff.png}
   \caption{
     \textbf{The AI Infrastructure Cliff (2020--2026).}
     Left panel: annual Capex stacked by hyperscaler (MSFT, GOOGL, AMZN, META) sourced
@@ -44,6 +44,32 @@ real interest rates through 2021.
     stress threshold in Q1~2026.
   }
   \label{fig:cliff}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig3_capex_to_fcf_ratio.png}
+  \caption{
+    \textbf{Annual Capex-to-FCF Ratio by Hyperscaler (2015--2026).}
+    Each series tracks the per-company ratio of capital expenditure to free cash flow.
+    The dashed red line marks the $1.0\times$ structural stress threshold. Amazon's
+    ratio breaches 17$\times$ in fiscal 2026 due to accelerated data-centre
+    provisioning. Source: SEC EDGAR XBRL \citep{sec_xbrl_api}.
+  }
+  \label{fig:capex_fcf_ratio}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{figures/fig4_fcf_runway.png}
+  \caption{
+    \textbf{Free Cash Flow Runway Projection: Flat FCF vs.\ 32.4\% Capex CAGR.}
+    The shaded red region shows the projected FCF deficit zone under a flat FCF
+    baseline of \$127B and trailing Capex CAGR of 32.4\%. The Monetisation
+    Runway (Equation~\ref{eq:runway}) of approximately 7.3 quarters from
+    Q1~2026 is shown as the intersection point.
+  }
+  \label{fig:runway}
 \end{figure}
 
 Figure~\ref{fig:cliff} illustrates the divergence. Aggregate hyperscaler Capex grew from
@@ -75,9 +101,9 @@ in AI-driven revenue, hyperscalers begin eroding their cash positions.
 
 \subsection{Historical Parallel: Velocity Comparison with the Dotcom Buildout}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig2_dotcom_telecom_parallel.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig2_dotcom_telecom_parallel.png}
   \caption{
     \textbf{Capex Acceleration Velocity: AI Hyperscalers vs.\ Dotcom Telecom (Normalised).}
     Dotcom buildout indexed to Q1~1995~$= 100$ (Cisco CSCO representative). AI buildout
@@ -98,9 +124,9 @@ speed of deployment over capital discipline.
 
 \subsection{The 2026 IPO Liquidity Vacuum}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig5_ipo_liquidity_vacuum.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig5_ipo_liquidity_vacuum.png}
   \caption{
     \textbf{2026 Synthetic IPO Supply Timeline.}
     Composite area plot of anticipated equity supply drains from SpaceX, Anthropic,
@@ -124,9 +150,9 @@ figure appears modest in isolation. Its impact is amplified for three compoundin
         to non-AI holdings via forced rebalancing (see Section~\ref{sec:impact}).
 \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/fig6_drawdown_trajectories.png}
+  \includegraphics[width=0.90\textwidth]{figures/fig6_drawdown_trajectories.png}
   \caption{
     \textbf{Forward Scenario Fan Chart: S\&P~500 and Nasdaq-100 through December 2027.}
     Three probability paths are shown: Fizzle (mild $-12.5\%$ compression),
@@ -137,3 +163,5 @@ figure appears modest in isolation. Its impact is amplified for three compoundin
   }
   \label{fig:scenarios}
 \end{figure}
+
+\clearpage
