@@ -1,0 +1,75 @@
+%% sections/04_limitations.tex
+%% Module 4: Methodology Limitations and Future Work
+
+\subsection{Public Market Proxies for Private Foundational Lab Valuations}
+
+The most significant methodological limitation of this study is the reliance on
+\textit{secondary market transaction prices} and \textit{journalistic valuation
+estimates} for the three principal IPO candidates: SpaceX (\$1.75T--\$2.3T target),
+Anthropic ($\$1$T), and OpenAI (\$850B--\$1.1T) \citep{bloomberg_spacex_2026,
+wsj_anthropic_ipo, ft_openai_ipo}.
+
+Private secondary market valuations are subject to:
+\begin{enumerate}
+  \item \textbf{Illiquidity premia:} Shares trading on Forge Global, Hiive, or
+        CartaX command a 15--40\% premium to theoretical fundamental value due
+        to scarcity, which collapses at IPO \citep{bessembinder2020}.
+  \item \textbf{Selection bias:} Only investors with positive views on a private
+        company transact in secondary markets; information asymmetry between
+        sellers (insiders) and buyers (outsiders) is not observable.
+  \item \textbf{Valuation vintage mismatch:} The most recent private rounds
+        for OpenAI (\$40B at a \$340B pre-money in March 2025) and Anthropic
+        (\$7.5B at \$61.5B pre-money in November 2024) are structurally
+        different instruments (preferred with liquidation preferences) from
+        public common equity.
+\end{enumerate}
+
+The $\$210$B float supply drain estimate should therefore be treated as an
+order-of-magnitude scenario assumption, not a precisely calibrated figure.
+A 50\% discount to stated valuations would reduce the estimated drain to
+$\$105$B---still the largest synchronised IPO liquidity extraction in market history
+but materially different from the base case.
+
+\subsection{Flat FCF Baseline Assumption}
+
+The Monetisation Runway calculation (Section~\ref{sec:intro}) assumes that aggregate
+hyperscaler FCF remains flat at its Q1~2026 annualised level. This assumption is
+violated if:
+
+\begin{itemize}
+  \item AI application revenue materialises faster than modelled, generating operating
+        leverage that expands FCF margins (upside risk to our thesis).
+  \item Hyperscalers accelerate capex in response to competitive pressure without
+        corresponding revenue acceleration (downside risk, consistent with our thesis).
+  \item A Capex pause occurs due to balance sheet constraints or regulatory intervention
+        (non-linear discontinuity our model does not currently handle).
+\end{itemize}
+
+\subsection{Correlation Matrix Stability Under Compute Derivative Introduction}
+
+The ScenarioStressTester calibrates its correlation matrix on the 2022 drawdown
+window (January--December 2022). If a functioning compute derivatives market develops
+prior to the 2026 IPO events, the hedging activity of hyperscalers and their investors
+would alter the correlation structure between AI equities, volatility products, and
+fixed-income instruments in ways our historical correlation matrix cannot capture.
+
+Specifically, delta-hedging activity by compute option market-makers would introduce
+a mechanical correlation between NDX realised volatility and GPU spot prices that
+does not exist in our historical data. This represents an entirely unmodelled risk factor.
+
+\subsection{Future Work}
+
+\begin{enumerate}
+  \item \textbf{Real-time index weight data:} Replace interpolated concentration
+        estimates with actual daily constituent weight data from Bloomberg/Refinitiv.
+  \item \textbf{Credit spread propagation:} Extend the VaR/PFE framework to
+        investment-grade and high-yield credit spreads, modelling the second-order
+        contagion from equity drawdown to corporate bond market liquidity.
+  \item \textbf{Compute capacity utilisation rate:} Incorporate CoreWeave spot pricing
+        or equivalent as a real-time proxy for AI infrastructure monetisation velocity.
+  \item \textbf{Multi-asset PFE:} Generalise the PFE calculation from equity-only
+        to a cross-asset portfolio that includes TIPS, VIX, and sector ETF exposures.
+  \item \textbf{Bayesian scenario updating:} Replace fixed scenario probabilities
+        with a Bayesian framework that updates as IPO filing dates and preliminary
+        prospectus valuations become available.
+\end{enumerate}

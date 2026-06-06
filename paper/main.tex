@@ -1,0 +1,248 @@
+%% main.tex
+%% Is the AI Infrastructure Boom an Economic Bubble?
+%% Quantitative Evidence from Hyperscaler Capex-FCF Divergence,
+%% IPO Supply Shocks, and Index Concentration Risk
+%%
+%% Submission target: arXiv q-fin.RM / q-fin.ST
+%% Document class: standard article with amsmath
+
+\documentclass[11pt,letterpaper]{article}
+
+%% ── Packages ────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+%% Mathematics
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+
+%% Figures, Tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+
+%% Formatting
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{parskip}
+
+%% Code listings
+\usepackage{listings}
+\lstset{basicstyle=\small\ttfamily, breaklines=true}
+
+%% Colours
+\usepackage[dvipsnames]{xcolor}
+\definecolor{linkblue}{RGB}{0, 70, 127}
+
+%% Hyperlinks (arXiv-compatible)
+\usepackage[
+  colorlinks = true,
+  linkcolor  = linkblue,
+  citecolor  = linkblue,
+  urlcolor   = linkblue,
+  pdftitle   = {Is the AI Infrastructure Boom an Economic Bubble?},
+  pdfauthor  = {Vinesh Ranga},
+]{hyperref}
+
+%% Bibliography
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{plainnat}
+
+%% Caption formatting
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+
+%% ── Custom Commands ──────────────────────────────────────────────────────────
+\newcommand{\VaR}{\text{VaR}}
+\newcommand{\PFE}{\text{PFE}}
+\newcommand{\HHI}{\text{HHI}}
+\newcommand{\MLB}{\text{MLB}}
+\newcommand{\betaliq}{\beta_{\text{liq}}}
+\newcommand{\zCF}{z_{\text{CF}}}
+
+%% ── Document ─────────────────────────────────────────────────────────────────
+\begin{document}
+
+\title{
+  \textbf{Is the AI Infrastructure Boom an Economic Bubble?}\\[6pt]
+  \large Quantitative Evidence from Hyperscaler Capex-FCF Divergence,\\
+  IPO Supply Shocks, and Index Concentration Risk
+}
+\author{
+  Vinesh Ranganathan\\[4pt]
+  \small \texttt{https://github.com/VineshRanga/Is-AIBubble}
+}
+\date{June 2026 \quad (Working Paper)}
+
+\maketitle
+
+\begin{abstract}
+The four largest AI hyperscalers---Microsoft, Alphabet, Amazon, and Meta---deployed a
+combined \$293 billion in capital expenditure during fiscal year 2025, generating only
+\$127 billion in free cash flow. The resulting Capex-to-FCF ratio of $2.31\times$ crossed
+the structural stress threshold of $1.0\times$ in the first quarter of 2026.
+We term this divergence the \textit{Compute Cliff}.
+
+Simultaneously, three pure-play AI entities (SpaceX, Anthropic, and OpenAI) are targeting
+public market listings that would collectively drain an estimated \$210 billion in
+institutional liquidity within a six-month window (June--December 2026). This supply shock
+arrives at the worst possible macro moment: when hyperscaler balance sheets are under maximum
+stress, and when the Nasdaq-100 is at its highest historical concentration level
+(top-5 constituents represent approximately 68\% of index weight).
+
+We build a quantitative risk framework to evaluate three probability paths for public equity
+markets through December 2027: a \textit{Fizzle} scenario (mild $-12.5\%$ compression
+absorbed gracefully), a \textit{Systemic Short} scenario ($-30\%$ over 90 trading days
+driven by macro hedge fund amplification), and a \textit{Dotcom Pop} trajectory ($-55\%$
+over 18 months replicating the 2000--2002 structural liquidation velocity).
+
+Our Index Liquidity Elasticity Coefficient $\betaliq$, calibrated on the 2022 tech drawdown
+as an out-of-sample anchor, produces a 99th-percentile Potential Future Exposure (PFE) of
+$75.5\%$ for the Nasdaq-100 under the Dotcom trajectory. A formal Kupiec (1995) and
+Christoffersen (1998) backtesting framework confirms that the Cornish-Fisher VaR model
+is appropriately conservative for the 2022--2026 evaluation window.
+
+The paper concludes with a discussion of the limitations inherent in this framework,
+including the use of public market proxies for private foundational lab valuations, the
+assumption of flat FCF baselines, and the potential for compute derivatives to alter
+the modelled correlation structure.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%% ── Section 1: Introduction ──────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+\input{sections/01_catalyst}
+
+%% ── Section 2: Module 2 Impact (Concentration, VaR, PFE) ────────────────────
+\section{Market Impact: Index Concentration and Tail Risk}
+\label{sec:impact}
+\input{sections/02_impact}
+
+%% ── Section 3: Mitigation and Policy Implications ────────────────────────────
+\section{Risk Mitigation and Policy Implications}
+\label{sec:mitigation}
+\input{sections/03_mitigation}
+
+%% ── Section 4: Limitations and Future Work ───────────────────────────────────
+\section{Methodology Limitations and Future Work}
+\label{sec:limitations}
+\input{sections/04_limitations}
+
+%% ── Section 5: Conclusion ────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+The AI infrastructure buildout represents the most concentrated capital deployment cycle
+in the history of the technology sector, executed at speeds that dwarf the 1990s
+telecommunications dark-fibre boom. The Compute Cliff---a structural divergence between
+capital deployment velocity and monetisation capacity---creates a precondition for
+balance-sheet stress at the hyperscaler layer even before external market shocks are
+considered.
+
+When the $\$210$B IPO liquidity vacuum is introduced into this already-stressed system,
+the Systemic Short scenario ($-30\%$ NDX compression within 90 trading days) emerges
+as the most historically consistent outcome, replicating the 2022 velocity profile under
+a supply-driven rather than rate-driven trigger. The elevated index concentration
+(NDX HHI: 874 in 2026 vs.\ 297 in 2010; a $2.78\times$ amplifier) ensures that any
+macro shock to the AI cluster propagates with non-linear force through passive vehicle
+holders.
+
+Future work should instrument actual compute derivatives pricing, incorporate real-time
+index weight data from paid providers, and extend the PFE framework to second-order
+credit and volatility surface effects.
+
+%% ── Bibliography ─────────────────────────────────────────────────────────────
+\bibliography{references}
+
+%% ── Appendices ───────────────────────────────────────────────────────────────
+\appendix
+
+\section{Data Sources and Reproducibility}
+\label{app:data}
+
+All data used in this study is sourced from publicly available, open-source endpoints
+and is fully reproducible:
+
+\begin{itemize}
+  \item \textbf{Hyperscaler financials:} SEC EDGAR CompanyFacts XBRL API
+    \citep{sec_xbrl_api}, queried via the project's \texttt{src/etl/edgar.py} module.
+    CIKs: MSFT 0000789019 \citep{msft_10k_2025}, GOOGL 0001652044 \citep{googl_10k_2025},
+    AMZN 0001018724 \citep{amzn_10k_2025}, META 0001326801 \citep{meta_10k_2025}.
+  \item \textbf{Market data:} Yahoo Finance via \texttt{yfinance} \citep{yfinance}.
+    Tickers: \texttt{\^{}GSPC}, \texttt{\^{}NDX}, MSFT, GOOGL, AMZN, META, CSCO.
+  \item \textbf{Macro indicators:} Federal Reserve FRED API via \texttt{pandas-datareader}.
+    Series: FEDFUNDS \citep{fred_fedfunds}, M2SL \citep{fred_m2},
+    STLFSI4 \citep{fred_stlfsi}.
+  \item \textbf{Code repository:} \url{https://github.com/VineshRanga/Is-AIBubble}
+\end{itemize}
+
+\section{Cornish-Fisher VaR Derivation}
+\label{app:cf}
+
+The Cornish-Fisher modification adjusts the standard normal quantile $z_\alpha$ for
+observed third and fourth cumulants (skewness $\hat{S}$ and excess kurtosis $\hat{K}$):
+
+\begin{equation}
+  \zCF = z_\alpha
+       + \frac{z_\alpha^2 - 1}{6}\hat{S}
+       + \frac{z_\alpha^3 - 3z_\alpha}{24}\hat{K}
+       - \frac{2z_\alpha^3 - 5z_\alpha}{36}\hat{S}^2
+  \label{eq:cf_expansion}
+\end{equation}
+
+The Cornish-Fisher VaR is then:
+
+\begin{equation}
+  \VaR_{\text{CF}} = -\hat{\mu} + \hat{\sigma} \cdot \zCF
+  \label{eq:cf_var}
+\end{equation}
+
+where $\hat{\mu}$ and $\hat{\sigma}$ are the sample mean and standard deviation of the
+return distribution estimated on the in-sample calibration window.
+
+\section{Kupiec and Christoffersen Test Statistics}
+\label{app:tests}
+
+\subsection{Kupiec Proportion-of-Failures Test}
+\label{app:kupiec}
+
+Let $T$ be the number of OOS observations and $x$ the observed number of VaR breaches.
+Under $H_0$: $p_{\hat{\text{}} } = x/T = p$ (theoretical breach probability), the
+log-likelihood ratio statistic is:
+
+\begin{equation}
+  LR_{\text{POF}} = -2\ln\!\left[\frac{p^x(1-p)^{T-x}}{\hat{p}^x(1-\hat{p})^{T-x}}\right]
+  \sim \chi^2(1)
+  \label{eq:kupiec_lr}
+\end{equation}
+
+\subsection{Christoffersen Independence Test}
+\label{app:christoffersen}
+
+Let $I_t \in \{0,1\}$ be the breach indicator at time $t$. Define transition probabilities
+$\pi_{01} = P(I_t = 1 \mid I_{t-1} = 0)$ and $\pi_{11} = P(I_t = 1 \mid I_{t-1} = 1)$.
+Under $H_0$ (independence): $\pi_{01} = \pi_{11} = \pi_2$ (unconditional). The LR statistic is:
+
+\begin{equation}
+  LR_{\text{ind}} = 2\ln\!\left[
+    \frac{(1-\hat\pi_{01})^{n_{00}} \hat\pi_{01}^{n_{01}}
+          (1-\hat\pi_{11})^{n_{10}} \hat\pi_{11}^{n_{11}}}
+         {(1-\hat\pi_2)^{n_{00}+n_{10}} \hat\pi_2^{n_{01}+n_{11}}}
+  \right] \sim \chi^2(1)
+  \label{eq:christoffersen_lr}
+\end{equation}
+
+The combined conditional-coverage test statistic $LR_{\text{CC}} = LR_{\text{POF}} + LR_{\text{ind}} \sim \chi^2(2)$.
+
+\end{document}
