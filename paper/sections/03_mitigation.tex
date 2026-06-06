@@ -1,0 +1,78 @@
+%% sections/03_mitigation.tex
+%% Module 3: Risk Mitigation and Policy Implications
+
+\subsection{Structural Risk Mitigation Frameworks}
+
+The quantitative findings presented in Sections~\ref{sec:intro}--\ref{sec:impact}
+imply several structural interventions that could reduce the probability of systemic
+market disruption:
+
+\subsubsection{Index Provider Concentration Guardrails}
+
+S\&P Dow Jones Indices and Nasdaq currently apply ad-hoc concentration rebalancing
+when any single constituent exceeds 24\% or the top-5 collectively exceed 50\% of index
+weight \citep{sp500methodology,nasdaq100methodology}. Given that both thresholds were
+exceeded by mid-2024, a more dynamic constraint---such as a real-time HHI-based
+rebalancing trigger---would smooth concentration-driven amplification.
+
+A proposed guardrail: trigger mandatory rebalancing whenever $\HHI > 800$ for any
+major index. This would limit the concentration amplifier $\alpha_{\HHI}$ to
+approximately $1.5\times$ in a worst-case scenario, reducing tail PFE by an
+estimated 35--40\%.
+
+\subsubsection{Compute Derivatives as Macro Hedging Instruments}
+
+The most structurally sound mitigation mechanism is the development of standardised
+\textit{compute derivatives}---forward and options contracts written on the price of
+AI compute capacity (typically quoted in \$/H100-hour or \$/PFLOP). Such instruments
+would allow:
+
+\begin{itemize}
+  \item Hyperscalers to hedge against compute price deflation (falling GPU rental prices
+        that reduce the economic justification for data centre construction);
+  \item Institutional investors to express directional views on AI infrastructure
+        utilisation rates without direct equity exposure;
+  \item Central banks to monitor aggregate compute capacity utilisation as a leading
+        indicator of AI sector stress, analogous to the use of forward-looking
+        credit spread indices in fixed-income surveillance.
+\end{itemize}
+
+The primary barrier to market development is the absence of a standardised reference
+rate for spot compute pricing. CoreWeave, Lambda Labs, and Microsoft Azure all
+publish different spot prices for equivalent GPU capacity, creating a fragmented
+price discovery landscape. A LIBOR-equivalent rate for AI compute---a ``COMPOR''---would
+be a prerequisite for a functioning derivatives market.
+
+\subsubsection{Regulatory Intervention Thresholds}
+
+Based on our modelling, the Systemic Short scenario becomes self-reinforcing above a
+$-20\%$ peak-to-trough NDX drawdown: at that threshold, index-tracking margin calls
+from leveraged ETF products would generate forced selling at an estimated \$8B/day,
+which exceeds the estimated market-making buffer at typical institutional spread widths.
+
+We recommend that SEC and CFTC establish pre-approved circuit-breaker coordination
+protocols for AI-sector-specific drawdowns above $-15\%$ (Level~1), $-20\%$ (Level~2),
+and $-30\%$ (Level~3) in the Nasdaq-100, distinct from the current market-wide
+circuit breakers which are calibrated to S\&P~500 moves of $-7\%$, $-13\%$, and $-20\%$.
+
+\subsection{Investor-Level Hedging Strategies}
+
+For institutional investors with significant AI equity exposure, three practical hedging
+overlays follow directly from the VaR/PFE framework:
+
+\begin{enumerate}
+  \item \textbf{Long-dated NDX put spreads:} Purchasing 18-month at-the-money NDX put
+        options funded by selling 40\% out-of-the-money puts creates a cost-efficient
+        protection structure that covers the Systemic Short scenario without full
+        premium outlay.
+
+  \item \textbf{VIX call spreads:} The 2022 drawdown demonstrated that implied volatility
+        on the Nasdaq reached 35--45 at peak stress from a pre-shock level of 18--22.
+        A VIX call spread (long 30, short 55) structured for the Q3--Q4 2026 window
+        provides convex payoff precisely during the IPO supply shock window.
+
+  \item \textbf{Sector rotation into compute-infrastructure beneficiaries:}
+        Utilities and industrial REITs with data-centre power grid exposure
+        (e.g., Vistra Energy, NRG) benefit from hyperscaler Capex regardless of
+        whether AI applications reach commercial inflection, providing a hedged long.
+\end{enumerate}
