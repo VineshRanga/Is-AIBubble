@@ -2,6 +2,10 @@
 
 Quantitative research project analyzing systemic macro risk driven by AI infrastructure capital expenditures (Capex).
 
+Whitepaper: https://drive.google.com/file/d/1aj66LFUmuPpFs1teiMx1m-aXaDivlrYK/view?usp=sharing
+
+Substack Article: https://open.substack.com/pub/vinranga/p/the-compute-cliff-is-the-ai-mega?r=4t2l27&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
+
 ## Research Modules
 
 | Module | Focus |
